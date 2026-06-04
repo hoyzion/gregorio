@@ -5,20 +5,34 @@ export default function CookieBanner({ isDark }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Verifica na memória do navegador se a pessoa já aceitou os cookies
     const cookieAccepted = localStorage.getItem('gregorios_cookie_accepted');
     
-    // Se não aceitou, mostra o banner depois de 2 segundos (para não assustar logo na entrada)
-    if (!cookieAccepted) {
+    // Se o cliente já tinha aceitado antes, nós avisamos o Google logo de cara
+    if (cookieAccepted) {
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'analytics_storage': 'granted'
+        });
+      }
+    } else {
+      // Se não aceitou, mostra o banner
       const timer = setTimeout(() => setIsVisible(true), 2000);
       return () => clearTimeout(timer);
     }
   }, []);
 
   const acceptCookies = () => {
-    // Salva na memória que a pessoa aceitou e esconde o banner
     localStorage.setItem('gregorios_cookie_accepted', 'true');
     setIsVisible(false);
+    
+    // A MÁGICA: Avisa o Google Analytics na mesma hora que o botão foi clicado!
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'analytics_storage': 'granted'
+      });
+    }
   };
 
   return (

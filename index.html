@@ -5,24 +5,27 @@
     <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- TÍTULO SUPER OTIMIZADO PARA O GOOGLE -->
     <title>Gregorioo's Restaurante | O Melhor de Poços de Caldas</title>
-    
-    <!-- DESCRIÇÃO CHAMATIVA -->
     <meta name="description" content="Procurando o melhor restaurante de Poços de Caldas? O Gregorioo's oferece a melhor comida caseira, marmitex e pratos especiais com sabor de tradição." />
-    
-    <!-- PALAVRAS-CHAVE ESTRATÉGICAS -->
     <meta name="keywords" content="melhor restaurante de poços de caldas, melhor restaurante do brasil, restaurante em poços de caldas, comida caseira, marmitaria, onde comer em poços de caldas, almoço, gregorioo's, marmitex, delivery" />
-    
     <meta name="author" content="Grupo Zynsa" />
 
-    <!-- Google tag (gtag.js) - AQUI ENTRA O SEU CÓDIGO DE RASTREAMENTO -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4LEXJHX6M"></script>
+    <!-- 1. CONFIGURAÇÃO DE PRIVACIDADE (LGPD) -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      
+      // Define que os cookies estão bloqueados até o cliente aceitar no banner
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied'
+      });
+    </script>
 
+    <!-- 2. SEU CÓDIGO DO GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4LEXJHX6M"></script>
+    <script>
+      gtag('js', new Date());
       gtag('config', 'G-Y4LEXJHX6M');
     </script>
   </head>
